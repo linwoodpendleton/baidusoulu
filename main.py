@@ -36,6 +36,8 @@ def check_index_number(url):
     :param url: 要查询的网址
     :return: 返回被百度收录的数量
     """
+    driver.implicitly_wait(10)
+    driver.get('http://www.baidu.com')
     url_a = 'https://www.baidu.com/s?wd=site%3A'
     url_b = '&pn=1'
     joinUrl = url_a + url + url_b
@@ -65,9 +67,11 @@ def getUrl(filepath):
 
 
 def get_hostloc(url):
-    cookies_to_dict(cookies_str)
-    try:
+    driver.implicitly_wait(10)
+    driver.get('http://www.baidu.com')
 
+    try:
+        cookies_to_dict(cookies_str)
         driver.get(url)  # 获取网页
         driver.implicitly_wait(10)
     except:
